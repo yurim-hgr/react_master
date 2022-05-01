@@ -53,7 +53,7 @@ const Img = styled.img`
   margin-right: 10px;
 `;
 
-interface CoinInterface {
+interface ICoin {
   id: string;
   name: string;
   symbol: string;
@@ -64,17 +64,7 @@ interface CoinInterface {
 }
 
 function Coins() {
-  const { isLoading, data } = useQuery<CoinInterface[]>("allCoins", fetchCoins);
-  // const [coins, setcoins] = useState<CoinInterface[]>([]);
-  // const [loading, setloading] = useState(true);
-  // useEffect(() => {
-  //   (async () => {
-  //     const response = await fetch("https://api.coinpaprika.com/v1/coins");
-  //     const json = await response.json();
-  //     setcoins(json.slice(0, 100));
-  //     setloading(false);
-  //   })();
-  // }, []);
+  const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
 
   return (
     <Container>
@@ -85,7 +75,7 @@ function Coins() {
         <Loading>"loading.."</Loading>
       ) : (
         <CoinsList>
-          {data?.map((coin) => (
+          {data?.slice(0, 100).map((coin) => (
             <Coin key={coin.id}>
               <Link to={`/${coin.id}`}>
                 <Img
