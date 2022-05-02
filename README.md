@@ -8,3 +8,5 @@
 - React Query
 - React Router DOM
 - Typescript
+- Recoil
+- Apex Charts

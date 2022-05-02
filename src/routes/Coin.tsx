@@ -182,7 +182,7 @@ function Coin() {
             </OverviewItem>
             <OverviewItem>
               <span>Price:</span>
-              <span>{dataTicker?.quotes.USD.price.toFixed(3)}</span>
+              <span>{dataTicker?.quotes?.USD?.price?.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{dataInfo?.description}</Description>
