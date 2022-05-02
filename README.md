@@ -1,6 +1,6 @@
-# React master
+# Crypto Tracker
 
-- cointracker
+[WEB URL](https://yurim-hgr.github.io/react_master)
 
 ### using
 

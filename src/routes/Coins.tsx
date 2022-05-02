@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
@@ -69,7 +70,7 @@ function Coins() {
   return (
     <Container>
       <Header>
-        <Title>코인</Title>
+        <Title>Crypto Tracker</Title>
       </Header>
       {isLoading ? (
         <Loading>"loading.."</Loading>

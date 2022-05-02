@@ -153,7 +153,10 @@ function Coin() {
 
   const { isLoading: loadingTicker, data: dataTicker } = useQuery<PriceData>(
     ["price", coinId],
-    () => fetchTickers(coinId)
+    () => fetchTickers(coinId),
+    {
+      refetchInterval: 5000,
+    }
   );
 
   const loading = loadingInfo || loadingTicker;
@@ -178,8 +181,8 @@ function Coin() {
               <span>${dataInfo?.symbol}</span>
             </OverviewItem>
             <OverviewItem>
-              <span>Open Source:</span>
-              <span>{dataInfo?.open_source ? "Yes" : "No"}</span>
+              <span>Price:</span>
+              <span>{dataTicker?.quotes.USD.price.toFixed(3)}</span>
             </OverviewItem>
           </Overview>
           <Description>{dataInfo?.description}</Description>
