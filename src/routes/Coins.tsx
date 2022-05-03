@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilValue, useSetRecoilState } from "recoil";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 import { isDarkAtom } from "../Atoms";
@@ -14,10 +14,25 @@ const Container = styled.div`
 `;
 
 const Header = styled.header`
+  width: 100%;
   height: 15vh;
+  display: grid;
+  grid-template-columns: repeat(1, 10% 1fr 10%);
+`;
+
+const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const Button = styled.div`
+  font-size: 1.5em;
+  border: none;
+  border-radius: 1em;
+  background-color: ${(props) => props.theme.cardBgColor};
+  cursor: pointer;
+  padding: 5px 10px;
 `;
 
 const CoinsList = styled.ul``;
@@ -69,14 +84,21 @@ interface ICoin {
 
 function Coins() {
   const { isLoading, data } = useQuery<ICoin[]>("allCoins", fetchCoins);
+  const isDark = useRecoilValue(isDarkAtom);
   const setIsDark = useSetRecoilState(isDarkAtom);
   const transmode = () => setIsDark((current) => !current);
 
   return (
     <Container>
       <Header>
-        <Title>Crypto Tracker</Title>
-        <button onClick={transmode}>trans mode</button>
+        <HeaderContainer></HeaderContainer>
+        <HeaderContainer>
+          <Title>Crypto Tracker</Title>
+        </HeaderContainer>
+
+        <HeaderContainer>
+          <Button onClick={transmode}>{isDark ? "🌞" : "🌚"}</Button>
+        </HeaderContainer>
       </Header>
       {isLoading ? (
         <Loading>"loading.."</Loading>

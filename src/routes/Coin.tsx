@@ -6,12 +6,15 @@ import {
   useLocation,
   useParams,
   useRouteMatch,
+  useHistory,
 } from "react-router-dom";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { fetchCoinsInfo, fetchTickers } from "../api";
 import Chart from "./Chart";
 import Price from "./Price";
+import { useSetRecoilState, useRecoilValue } from "recoil";
+import { isDarkAtom } from "../Atoms";
 
 const Title = styled.h1`
   font-size: 48px;
@@ -30,10 +33,27 @@ const Container = styled.div`
 `;
 
 const Header = styled.header`
+  width: 100%;
   height: 15vh;
+  display: grid;
+  grid-template-columns: repeat(1, 10% 1fr 10%);
+`;
+
+const HeaderContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+const Button = styled.div`
+  font-size: 1.5em;
+  border: none;
+  border-radius: 1em;
+  background-color: ${(props) => props.theme.cardBgColor};
+  cursor: pointer;
+  padding: 5px 10px;
+`;
+const Icon = styled.div`
+  font-size: 1em;
 `;
 
 const Overview = styled.div`
@@ -145,7 +165,10 @@ function Coin() {
   const { state } = useLocation<RouteState>();
   const priceMatch = useRouteMatch("/:coinId/price");
   const chartMatch = useRouteMatch("/:coinId/chart");
-
+  const history = useHistory();
+  const isDark = useRecoilValue(isDarkAtom);
+  const setIsDark = useSetRecoilState(isDarkAtom);
+  const transmode = () => setIsDark((current) => !current);
   const { isLoading: loadingInfo, data: dataInfo } = useQuery<InfoData>(
     ["info", coinId],
     () => fetchCoinsInfo(coinId)
@@ -163,9 +186,19 @@ function Coin() {
   return (
     <Container>
       <Header>
-        <Title>
-          {state?.name ? state.name : loading ? "Loading..." : dataInfo?.name}
-        </Title>
+        <HeaderContainer>
+          <Button as="a" onClick={() => history.push("/")}>
+            <Icon>🏠</Icon>
+          </Button>
+        </HeaderContainer>
+        <HeaderContainer>
+          <Title>
+            {state?.name ? state.name : loading ? "Loading..." : dataInfo?.name}
+          </Title>
+        </HeaderContainer>
+        <HeaderContainer>
+          <Button onClick={transmode}>{isDark ? "🌞" : "🌚"}</Button>
+        </HeaderContainer>
       </Header>
       {loading ? (
         <Loader>Loading...</Loader>
