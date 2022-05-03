@@ -42,7 +42,7 @@ const Coin = styled.li`
   color: ${(props) => props.theme.textColor};
   border-radius: 15px;
   margin-bottom: 10px;
-  border: 1px solid white;
+  border: 1.5px solid ${(props) => props.theme.textColor};
   a {
     padding: 20px;
     transition: color 0.2s ease-in;
@@ -57,7 +57,7 @@ const Coin = styled.li`
 `;
 
 const Title = styled.h1`
-  font-size: 48px;
+  font-size: 42px;
   color: ${(props) => props.theme.accentColor};
 `;
 
@@ -93,7 +93,7 @@ function Coins() {
       <Header>
         <HeaderContainer></HeaderContainer>
         <HeaderContainer>
-          <Title>Crypto Tracker</Title>
+          <Title>CRYPTO TRACKER</Title>
         </HeaderContainer>
 
         <HeaderContainer>

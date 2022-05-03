@@ -59,9 +59,10 @@ const Icon = styled.div`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.cardBgColor};
   padding: 10px 20px;
   border-radius: 10px;
+  border: 1.5px solid ${(props) => props.theme.textColor};
 `;
 const OverviewItem = styled.div`
   display: flex;
@@ -90,9 +91,10 @@ const Tab = styled.span<{ isActive: boolean }>`
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 400;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.cardBgColor};
   padding: 7px 0px;
   border-radius: 10px;
+  border: 1.5px solid ${(props) => props.theme.textColor};
   color: ${(props) =>
     props.isActive ? props.theme.accentColor : props.theme.textColor};
   a {
@@ -188,7 +190,7 @@ function Coin() {
       <Header>
         <HeaderContainer>
           <Button as="a" onClick={() => history.push("/")}>
-            <Icon>🏠</Icon>
+            <Icon>↩</Icon>
           </Button>
         </HeaderContainer>
         <HeaderContainer>
@@ -241,7 +243,7 @@ function Coin() {
 
           <Switch>
             <Route path={`/:coinId/price`}>
-              <Price />
+              <Price coinId={coinId} dataTicker={dataTicker} />
             </Route>
             <Route path={`/:coinId/chart`}>
               <Chart coinId={coinId} />

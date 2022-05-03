@@ -11,5 +11,5 @@ export const lightTheme: DefaultTheme = {
   bgColor: "whitesmoke",
   textColor: "black",
   accentColor: "#9c88ff",
-  cardBgColor: "white",
+  cardBgColor: "transparent",
 };
