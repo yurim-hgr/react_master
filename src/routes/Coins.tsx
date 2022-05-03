@@ -30,7 +30,7 @@ const Button = styled.div`
   font-size: 1.5em;
   border: none;
   border-radius: 1em;
-  background-color: ${(props) => props.theme.cardBgColor};
+  background-color: ${(props) => props.theme.textColor};
   cursor: pointer;
   padding: 5px 10px;
 `;

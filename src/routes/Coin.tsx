@@ -48,12 +48,13 @@ const Button = styled.div`
   font-size: 1.5em;
   border: none;
   border-radius: 1em;
-  background-color: ${(props) => props.theme.cardBgColor};
+  background-color: ${(props) => props.theme.textColor};
   cursor: pointer;
   padding: 5px 10px;
 `;
 const Icon = styled.div`
   font-size: 1em;
+  color: ${(props) => props.theme.bgColor};
 `;
 
 const Overview = styled.div`
