@@ -93,7 +93,7 @@ function Coins() {
       <Header>
         <HeaderContainer></HeaderContainer>
         <HeaderContainer>
-          <Title>CRYPTO TRACKER</Title>
+          <Title>COIN TRACKER</Title>
         </HeaderContainer>
 
         <HeaderContainer>
