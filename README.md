@@ -6,7 +6,7 @@
 
 ### 프로젝트 화면
 
-![image](https://user-images.githubusercontent.com/51738855/173885586-6b519c8c-d3d2-4df9-8c57-3deb8b0e20cf.png)
+![image](https://user-images.githubusercontent.com/51738855/173886237-28091ce5-97ca-4b2a-a244-1ba6b54e1ed2.png)
 
 ### using
 
